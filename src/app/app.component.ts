@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { ProductService } from './product.service';
+import { Observable } from 'rxjs/Rx';
+import { SpotifyService } from './spotify.service';
+
 
 @Component({selector: 'app-root',
-template: `<h1>{{title}}</h1>
-<products></products>`,
-providers: [ProductService]
+template: ``,
+providers: [SpotifyService]
 })
 export class AppComponent {
-  title = 'MySpot';
+  constructor(private _spotifyService:SpotifyService){
+    this._spotifyService.getSpotifyData().subscribe(data => console.log(data));
+  }
 }
